@@ -9,8 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'bg-main':    'var(--bg-main)',
+        'bg-card':    'var(--bg-card)',
+        'accent-purple': 'var(--accent-purple)',
+        'accent-green':  'var(--accent-green)',
+        'accent-gold':   'var(--accent-gold)',
+        'accent-orange': 'var(--accent-orange)',
+        'accent-blue':   'var(--accent-blue)',
+        'text-primary':  'var(--text-primary)',
+        'text-secondary':'var(--text-secondary)',
+        border:          'var(--border)',
       },
     },
   },

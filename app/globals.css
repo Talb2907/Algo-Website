@@ -3,25 +3,58 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-main: #0f0f13;
+  --bg-card: #1a1a24;
+  --bg-card-hover: #1e1e2e;
+  --accent-purple: #7F77DD;
+  --accent-green: #1D9E75;
+  --accent-gold: #EF9F27;
+  --accent-orange: #E07B39;
+  --accent-blue: #5B9BD5;
+  --text-primary: #e8e8f0;
+  --text-secondary: #8888aa;
+  --border: #2a2a38;
+  --border-hover: #3a3a50;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html.light {
+  --bg-main: #f4f4f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #eeeef6;
+  --accent-purple: #6058c8;
+  --accent-green: #167a5a;
+  --accent-gold: #c47f10;
+  --accent-orange: #b85f22;
+  --accent-blue: #3a78b5;
+  --text-primary: #1a1a2e;
+  --text-secondary: #5a5a7a;
+  --border: #dcdcec;
+  --border-hover: #c0c0d8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  direction: rtl;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  min-height: 100vh;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
+
+.kw  { color: var(--accent-purple); font-weight: 600; }
+.fn  { color: var(--accent-green); }
+.cmt { color: var(--text-secondary); font-style: italic; }
+.num { color: var(--accent-gold); }
