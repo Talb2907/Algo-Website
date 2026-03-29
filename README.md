@@ -1,71 +1,73 @@
-# Algo-Learn — פלטפורמת לימוד אלגוריתמים אינטראקטיבית
+# Algo-Learn
 
-> An interactive, Hebrew-language algorithms learning platform built for course **636017**. Step-by-step visualizations, an AI personal tutor, an AI-powered exam generator, and direct Moodle integration — all in one place.
+**Interactive algorithms learning platform with step-by-step visualizations, an AI tutor, and an AI-powered exam generator.**
+
+![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-latest-EF008F?style=flat-square&logo=framer&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
 
 ---
 
 ## Overview
 
-Algo-Learn is a full-stack web application designed to help students master the algorithms covered in course 636017. Every algorithm ships with four dedicated learning tabs:
+Algo-Learn is a full-stack web app that makes algorithms tangible. Every algorithm ships with four dedicated tabs:
 
-| Tab | Description |
+| Tab | What it does |
 |-----|-------------|
-| **הסבר** (Explain) | Detailed breakdown — goal, input/output, pseudocode, and key notes |
-| **הדמיה** (Animation) | Step-by-step animated visualization on a live graph canvas |
-| **סיבוכיות** (Complexity) | Visual complexity bars and a full comparison table across all algorithms |
-| **חידון** (Quiz) | Auto-graded multiple-choice questions with explanations |
+| **Explain** | Goal, input/output, pseudocode, and key notes |
+| **Animation** | Step-by-step visualization on a live graph canvas |
+| **Complexity** | Visual complexity bars and a cross-algorithm comparison table |
+| **Quiz** | Auto-graded multiple-choice questions with explanations |
 
 ---
 
-## Key Features
+## Features
 
-### Animated Algorithm Visualizations
-Thirteen algorithms are fully animated, rendered on an interactive canvas using a shared `GraphCanvas` component. Each step highlights active nodes, edges, and state changes in real time.
+### ▶ Algorithm Visualizations
 
-**Algorithms covered:**
+Sixteen algorithms are fully animated via a shared `GraphCanvas` component. Every step highlights active nodes, edges, and internal state in real time.
 
 | Group | Algorithms |
 |-------|-----------|
-| Graph traversal | BFS, DFS, Topological Sort, SCC |
-| Minimum spanning tree | Kruskal, Prim |
-| Shortest paths | Dijkstra, Bellman-Ford, Floyd-Warshall, DAG-SP, A\* |
+| Graph Traversal | BFS, DFS, Topological Sort, SCC |
+| Minimum Spanning Tree | Kruskal, Prim |
+| Shortest Paths | Dijkstra, Bellman-Ford, Floyd-Warshall, DAG-SP, A\* |
 | Greedy | Huffman Coding |
-| Network flow | Ford-Fulkerson, Edmonds-Karp |
+| Network Flow | Ford-Fulkerson, Edmonds-Karp |
 | Sorting | Merge Sort |
 
----
+### 🤖 AI Personal Tutor
 
-### AI Personal Tutor
-A persistent chat panel powered by **Claude (Anthropic)** answers any question about course material. The tutor is context-aware — it knows which algorithm page the student is currently viewing and tailors its explanations accordingly.
+A persistent chat panel powered by the **Claude API** answers questions about any algorithm. The tutor is page-aware — it knows which algorithm is currently open and tailors explanations to that context.
 
----
+### 📝 AI Exam Generator
 
-### AI Exam Generator
-Students configure a custom exam by selecting:
+Generate a custom practice exam in seconds. Configure:
 - Which algorithms to include
 - Number of questions (5 / 10 / 15 / 20)
-- Difficulty level (easy / medium / hard)
+- Difficulty (easy / medium / hard)
 
-Questions are generated in real time via the Claude API, presented one at a time with instant feedback and a final summary screen.
+Questions are generated in real time via the Claude API, presented one at a time with instant feedback, and followed by a scored summary screen.
 
----
+### 🎓 Moodle Integration
 
-### Moodle Integration
-The exam generator can pull course materials directly from the university Moodle platform. A headless Playwright browser scrapes the course page, extracts PDFs and presentations, and feeds the parsed content into the exam prompt — producing questions that are specific to the actual course slides and assignments.
+The exam generator can ingest course materials directly from a Moodle instance. A headless Playwright browser scrapes the course page, extracts PDFs and presentations via `pdf-parse` and `officeparser`, and feeds the parsed text into the exam prompt — producing questions grounded in your actual course materials.
 
 ---
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| Framework | [Next.js 14](https://nextjs.org) (App Router) |
+| | Technology |
+|--|-----------|
+| Framework | [Next.js 14](https://nextjs.org) — App Router, server components, API routes |
 | Language | TypeScript (strict mode) |
-| Styling | Tailwind CSS + CSS custom properties (dark/light theme) |
+| Styling | Tailwind CSS + CSS custom properties (dark / light theme) |
 | Animations | [Framer Motion](https://www.framer.com/motion/) |
-| State management | [Zustand](https://zustand-demo.pmnd.rs/) |
-| AI | [Anthropic Claude API](https://www.anthropic.com) (`@anthropic-ai/sdk`) |
-| Browser automation | [Playwright](https://playwright.dev/) |
+| State | [Zustand](https://zustand-demo.pmnd.rs/) |
+| AI | [Anthropic Claude](https://www.anthropic.com) via `@anthropic-ai/sdk` |
+| Automation | [Playwright](https://playwright.dev/) |
 | File parsing | `pdf-parse`, `officeparser` |
 
 ---
@@ -73,42 +75,34 @@ The exam generator can pull course materials directly from the university Moodle
 ## Project Structure
 
 ```
-algo-learn/
 ├── app/
-│   ├── page.tsx                  # Landing page
-│   ├── [algorithm]/page.tsx      # Dynamic algorithm page (all 4 tabs)
-│   ├── exam/page.tsx             # Exam generator UI
+│   ├── page.tsx                    # Landing page
+│   ├── [algorithm]/page.tsx        # Dynamic algorithm page (all 4 tabs)
+│   ├── exam/page.tsx               # Exam generator
 │   └── api/
-│       ├── chat/route.ts         # AI tutor endpoint
-│       ├── generate-exam/route.ts# Exam generation endpoint
-│       └── moodle-scraper/route.ts
+│       ├── chat/route.ts           # AI tutor endpoint
+│       ├── generate-exam/route.ts  # Exam generation endpoint
+│       └── moodle-scraper/route.ts # Moodle scraping endpoint
 ├── components/
-│   ├── animations/               # One animation component per algorithm
-│   ├── tabs/                     # ExplainTab, AnimationTab, ComplexityTab, QuizTab
-│   ├── layout/                   # Sidebar, Header
-│   └── ui/                       # AITutor, PseudoCode, ThemeToggle
+│   ├── animations/                 # One animation component per algorithm
+│   ├── tabs/                       # ExplainTab, AnimationTab, ComplexityTab, QuizTab
+│   ├── layout/                     # Sidebar, Header
+│   └── ui/                         # AITutor, PseudoCode, ThemeToggle
 ├── data/
-│   ├── algorithms.ts             # Algorithm metadata (slugs, groups, colors)
-│   └── content/                  # Per-algorithm content (pseudocode, questions, etc.)
-├── store/
-│   └── quizStore.ts              # Zustand store for quiz state
-├── types/
-│   └── index.ts                  # Shared TypeScript types
+│   ├── algorithms.ts               # Algorithm metadata (slugs, groups, colors)
+│   └── content/                    # Per-algorithm content (pseudocode, questions)
+├── store/quizStore.ts              # Zustand quiz state
+├── types/index.ts                  # Shared TypeScript types
 └── lib/
-    ├── file-extractor.ts         # PDF/Office parsing utilities
-    └── moodle-browser.ts         # Playwright Moodle scraper
+    ├── file-extractor.ts           # PDF / Office parsing utilities
+    └── moodle-browser.ts           # Playwright scraper
 ```
 
 ---
 
-## Running Locally
+## Getting Started
 
-### Prerequisites
-- Node.js 18+
-- An [Anthropic API key](https://console.anthropic.com/)
-- (Optional) Moodle credentials for the course integration
-
-### 1. Clone and install
+**Prerequisites:** Node.js 18+, an [Anthropic API key](https://console.anthropic.com/)
 
 ```bash
 git clone https://github.com/Talb2907/Algo-Website.git
@@ -116,48 +110,20 @@ cd Algo-Website
 npm install
 ```
 
-### 2. Configure environment variables
-
-Create a `.env.local` file in the project root:
+Create `.env.local`:
 
 ```env
 ANTHROPIC_API_KEY=your_api_key_here
 
-# Optional — required only for Moodle integration
-MOODLE_URL=https://moodle.your-university.ac.il
+# Optional — only needed for Moodle integration
+MOODLE_URL=https://moodle.example.com
 MOODLE_USERNAME=your_username
 MOODLE_PASSWORD=your_password
-MOODLE_COURSE_ID=636017
+MOODLE_COURSE_ID=your_course_id
 ```
-
-### 3. Start the development server
 
 ```bash
-npm run dev
+npm run dev       # http://localhost:3000
+npm run build     # production build
+npm start         # serve production build
 ```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### 4. Build for production
-
-```bash
-npm run build
-npm start
-```
-
----
-
-## Available Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start the development server |
-| `npm run build` | Build for production |
-| `npm start` | Start the production server |
-| `npm run lint` | Run ESLint |
-
----
-
-## Course
-
-This project was built for **course 636017 — Algorithms** at the Open University of Israel.
