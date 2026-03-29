@@ -14,6 +14,7 @@ import huffman from './huffman';
 import astar from './astar';
 import fordFulkerson from './ford-fulkerson';
 import edmondsKarp from './edmonds-karp';
+import mergesort from './mergesort';
 
 export const CONTENT: Record<string, AlgorithmContent> = {
   basics,
@@ -31,4 +32,5 @@ export const CONTENT: Record<string, AlgorithmContent> = {
   astar,
   'ford-fulkerson': fordFulkerson,
   'edmonds-karp': edmondsKarp,
+  mergesort,
 };

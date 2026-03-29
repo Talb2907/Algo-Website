@@ -6,6 +6,7 @@ export const GROUP_LABELS: Record<AlgorithmGroup, string> = {
   sp: 'מסלולים קלים',
   greedy: 'אלגוריתמים חמדניים',
   flow: 'זרימה ברשת',
+  sorting: 'מיון',
 };
 
 export const GROUP_COLORS: Record<AlgorithmGroup, string> = {
@@ -14,6 +15,7 @@ export const GROUP_COLORS: Record<AlgorithmGroup, string> = {
   sp: '#EF9F27',
   greedy: '#E07B39',
   flow: '#5B9BD5',
+  sorting: '#E63946',
 };
 
 export const ALGORITHMS: AlgorithmMeta[] = [
@@ -37,6 +39,8 @@ export const ALGORITHMS: AlgorithmMeta[] = [
   // Flow
   { slug: 'ford-fulkerson',name: "Ford-Fulkerson",      nameEn: 'Ford-Fulkerson', group: 'flow',  hasAnimation: true  },
   { slug: 'edmonds-karp',  name: "Edmonds-Karp",        nameEn: 'Edmonds-Karp',   group: 'flow',  hasAnimation: true  },
+  // Sorting
+  { slug: 'mergesort',     name: "מיון מיזוג",          nameEn: 'Merge Sort',     group: 'sorting', hasAnimation: true  },
 ];
 
 export const ALGORITHM_BY_SLUG = Object.fromEntries(
@@ -52,4 +56,4 @@ export const ALGORITHMS_BY_GROUP = ALGORITHMS.reduce<Partial<Record<AlgorithmGro
   {}
 ) as Record<AlgorithmGroup, AlgorithmMeta[]>;
 
-export const GROUP_ORDER: AlgorithmGroup[] = ['graph', 'mst', 'sp', 'greedy', 'flow'];
+export const GROUP_ORDER: AlgorithmGroup[] = ['graph', 'mst', 'sp', 'greedy', 'flow', 'sorting'];

@@ -31,6 +31,7 @@ const ALL_ALGORITHMS = [
   { name: 'Huffman',       time: 'O(n log n)',space: 'O(n)' },
   { name: 'Ford-Fulkerson',time: 'O(E·|f*|)', space: 'O(V)' },
   { name: 'Edmonds-Karp',  time: 'O(VE²)',    space: 'O(V)' },
+  { name: 'מיון מיזוג (Merge Sort)', time: 'O(n log n)', space: 'O(n)' },
 ];
 
 function ComplexityBar({ label }: { label: string }) {

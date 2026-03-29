@@ -13,9 +13,10 @@ export type AlgorithmSlug =
   | 'huffman'
   | 'astar'
   | 'ford-fulkerson'
-  | 'edmonds-karp';
+  | 'edmonds-karp'
+  | 'mergesort';
 
-export type AlgorithmGroup = 'graph' | 'mst' | 'sp' | 'greedy' | 'flow';
+export type AlgorithmGroup = 'graph' | 'mst' | 'sp' | 'greedy' | 'flow' | 'sorting';
 
 export interface AlgorithmMeta {
   slug: AlgorithmSlug;

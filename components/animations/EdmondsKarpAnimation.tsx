@@ -82,7 +82,7 @@ const STEPS: Step[] = [
 
   // Path 3: BFS — uses residual edge d→b (since d→t is full)
   mk({ ...SRC, c:'gray', d:'gray', b:'gray', t:'black' },
-    { 's->a':'tree', 'a->b':'tree', 'b->t':'tree', 's->c':'active', 'c->d':'active', 'd->b':'active', 'd->t':'rejected', 'b->t':'active' },
+    { 's->a':'tree', 'a->b':'tree', 's->c':'active', 'c->d':'active', 'd->b':'active', 'd->t':'rejected', 'b->t':'active' },
     { ...F0, 's->a':12, 's->c':4, 'a->b':12, 'b->t':12, 'c->d':4, 'd->t':4 }, 16,
     ['c','d','b','t'], ['s','c','d','b','t'],
     's → c → d → b → t', 7, 3,
